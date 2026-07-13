@@ -1,0 +1,36 @@
+# Q2. Create a class with the following attributes:
+# • title
+# • author
+# • list of reviews
+# And add methods to:
+# • add a new review
+# • count reviews
+# • display all reviews
+
+class book:
+    def __init__(self,title,author,list_of_reviews):
+        self.title = title 
+        self.author = author
+        self.list_of_reviews = list_of_reviews
+
+    
+    def new_review(self, review):
+        self.list_of_reviews.append(review)
+        print(f"The new review about this book is {review}")
+    
+    
+    def count_reviews(self):
+        print(f"The total numbers of reviews are {len(self.list_of_reviews)}")
+    
+    
+    def all_reviews(self):
+        for reviews in self.list_of_reviews:
+            print(reviews)
+    
+        
+b = book("Python book","Ahmend Ali khan", [])
+
+b.new_review("This is very helpful book")
+b.new_review("THis is best to learn programing")
+b.count_reviews()
+b.all_reviews()
