@@ -1,0 +1,30 @@
+# Concept: Classes & Objects
+# Q1. Create a class with attributes account_number, owner_name,
+# and balance.
+# Add methods to deposit, withdraw, and check balance.
+
+
+class Bank_Account:
+
+    def __init__(self,account_number,owner_name,balance):
+        self.account_number = account_number
+        self.owner_name = owner_name
+        self.balance = balance
+        
+    def deposit(self,amount): 
+        print(f"{self.owner_name} deposit {amount} in their account")
+        self.balance += amount
+    def withdraw(self, amount):
+        if (amount<= self.balance):
+            print(f"{self.owner_name} withdraw Rs {amount} from their account")
+            self.balance -=amount
+        else:
+            print("Insuficant Balance")
+    
+    def check_balance(self):
+        print(f"total balance of {self.owner_name} is {self.balance}")
+        
+acc = Bank_Account("1234534","Abdul basit",10000)
+acc.deposit(1000)
+acc.withdraw(3456)
+acc.check_balance()
