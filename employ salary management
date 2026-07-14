@@ -1,0 +1,40 @@
+# Concept: Abstraction
+# Q6. Create an abstract class with an abstract method
+# calculate_salary().
+# Create subclasses , , and that
+# implement the method differently.
+
+class Employ:
+    @abstract_method
+    def calculate_salary(self):
+        pass
+class FullTimeEmployee(Employ):
+    def __init__(self, monthly_salary):
+        self.monthly_salary = monthly_salary
+    
+    def calculate_salary(self):
+        return self.monthly_salary
+    
+class PartTimeEmployee(Employ):
+    def __init__(self, hours_worked, hourly_rate):
+        self.hours_worked = hours_worked,
+        self.hourly_rate  = hourly_rate
+    def calculate_salary(self):
+        return self.hours_worked * self.hourly_rate
+    
+class Freelancer(Employee):
+    def __init__(self, projects, payment_per_project):
+        self.projects = projects
+        self.payment_per_project = payment_per_project
+
+    def calculate_salary(self):
+        return self.projects * self.payment_per_project
+
+
+e1 = FullTimeEmployee(50000)
+e2 = PartTimeEmployee(80, 500)
+e3 = Freelancer(4, 12000)
+
+print("Full-Time Salary:", e1.calculate_salary())
+print("Part-Time Salary:", e2.calculate_salary())
+print("Freelancer Salary:", e3.calculate_salary())
