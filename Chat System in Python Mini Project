@@ -1,0 +1,70 @@
+class User:
+    def __init__(self, name):
+        self.name = name
+
+    def join_chatroom(self, chatroom):
+        chatroom.add_user(self)
+
+    def leave_chatroom(self, chatroom):
+        chatroom.remove_user(self)
+
+    def send_message(self, chatroom, text):
+        message = Message(self, text)
+        chatroom.receive_message(message)
+
+
+class Message:
+    def __init__(self, sender, text):
+        self.sender = sender
+        self.text = text
+
+    def display(self):
+        print(f"{self.sender.name}: {self.text}")
+
+
+class ChatRoom:
+    def __init__(self):
+        self.users = []
+        self.chat_history = []
+
+    def add_user(self, user):
+        self.users.append(user)
+        print(f"{user.name} joined the chatroom.")
+
+    def remove_user(self, user):
+        if user in self.users:
+            self.users.remove(user)
+            print(f"{user.name} left the chatroom.")
+
+    def receive_message(self, message):
+        if message.sender in self.users:
+            self.chat_history.append(message)
+            print(f"Message sent by {message.sender.name}")
+        else:
+            print(f"{message.sender.name} is not in the chatroom.")
+
+    def show_history(self):
+        print("\n----- Chat History -----")
+        if not self.chat_history:
+            print("No messages yet.")
+        else:
+            for message in self.chat_history:
+                message.display()
+
+
+# Main Program
+room = ChatRoom()
+
+user1 = User("Ali")
+user2 = User("Sara")
+
+user1.join_chatroom(room)
+user2.join_chatroom(room)
+
+user1.send_message(room, "Hello everyone!")
+user2.send_message(room, "Hi Ali!")
+user1.send_message(room, "How are you?")
+
+room.show_history()
+
+user2.leave_chatroom(room)
