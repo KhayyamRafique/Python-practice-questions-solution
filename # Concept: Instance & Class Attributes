@@ -1,0 +1,20 @@
+
+# Concept: Instance & Class Attributes
+# Q8. Create a class with:
+# • a class variable player_count
+# • instance variables name and level
+# Track how many players were created.
+
+
+
+class players:
+    player_count = 0
+    def __init__(self,name,level):
+        self.name = name
+        self.level = level
+        players.player_count += 1
+
+
+p = players("Ali","third")
+
+print(players.player_count)
